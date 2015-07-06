@@ -37,6 +37,11 @@ java_properties '<properties_file>' do
 end
 ```
 
+If the properties file already exists, this resource will merge the properties you set with the properties
+contained in the file. Duplicate entries will be overwritten by properties you have set.
+
+If the properties file does not exist, it will be created with the properties you set.
+
 ## License and Authors
 
 Author:: Ryan Larson (ryan.mango.larson@gmail.com)
