@@ -4,8 +4,8 @@ A library cookbook that provides a resource that knows how to manipulate Java pr
 
 ## Supported Platforms
 
-Windows
-Linux
+   * Windows 
+   * Linux
 
 ## Usage
 
