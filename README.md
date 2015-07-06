@@ -1,42 +1,42 @@
 # java_properties-cookbook
 
-TODO: Enter the cookbook description here.
+A library cookbook that provides a resource that knows how to manipulate Java properties files. 
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['java_properties']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Windows
+Linux
 
 ## Usage
 
-### java_properties::default
+This cookbook is available on the public supermarket.
 
-Include `java_properties` in your node's `run_list`:
+Depend on the `java_properties` cookbook in your cookbook's metadata.rb file
+ 
+`depends java_properties`
 
-```json
-{
-  "run_list": [
-    "recipe[java_properties::default]"
-  ]
-}
+### java_properties resource
+
+Example usage:
+
+```
+java_properties '<properties_file>' do
+  # This can be set explicitly or just using the resource name
+  properties_file '/tmp/java.properties'
+  
+  # You can use the 'property' directive to set properties
+  property 'key1', 'value1'
+  property 'key2', 'value2'
+  
+  # You can pass an explicit hash of properties
+  properties {:key1 => 'value1', :key2 => 'value2'}
+  
+  # You can use the attribute name as the key dynamically
+  key1 'value1'
+  key2 'value2'
+end
 ```
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Ryan Larson (ryan.mango.larson@gmail.com)
