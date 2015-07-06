@@ -46,7 +46,11 @@ class Chef
       end
 
       def properties_from_file
-        ensure_all_hash_keys_are_symbols(::JavaProperties.load(@properties_file))
+        if ::File.exist?(@properties_file)
+          ensure_all_hash_keys_are_symbols(::JavaProperties.load(@properties_file))
+        else
+          Hash.new
+        end
       end
 
       def properties_from_attributes

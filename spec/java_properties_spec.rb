@@ -43,4 +43,10 @@ describe 'java_properties_hwrp_test::java_properties_test' do
     it { is_expected.to merge_java_properties('No changes') }
     it { is_expected.not_to create_file(test_properties_file_path('test_no_changes.properties')) }
   end
+
+  context 'file is created if it does not exist' do
+    it { is_expected.to merge_java_properties('File does not exist') }
+    it { is_expected.to create_file(test_properties_file_path('test_does_not_exist.properties'))
+                        .with_content('java_home=asdf') }
+  end
 end

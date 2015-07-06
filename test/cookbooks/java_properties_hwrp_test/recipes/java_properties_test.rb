@@ -30,3 +30,8 @@ java_properties 'No changes' do
   properties_file test_properties_file_path('test_no_changes.properties')
   java_home 'asdf'
 end
+
+java_properties 'File does not exist' do
+  properties_file test_properties_file_path('test_does_not_exist.properties')
+  java_home 'asdf'
+end
