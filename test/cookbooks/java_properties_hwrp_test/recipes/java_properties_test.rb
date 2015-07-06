@@ -25,3 +25,8 @@ java_properties 'Mixed methods' do
   property('ruby_home', '/usr/lib/ruby/test_mixed_method_call')
   ruby_home 'usr/lib/ruby/test_mixed_dynamic'
 end
+
+java_properties 'No changes' do
+  properties_file test_properties_file_path('test_no_changes.properties')
+  java_home 'asdf'
+end

@@ -38,4 +38,9 @@ describe 'java_properties_hwrp_test::java_properties_test' do
                         .with_content(['java.home=/usr/lib/jvm/test_mixed_hash',
                                        'ruby_home=usr/lib/ruby/test_mixed_dynamic'].join($/)) }
   end
+
+  context 'file is not updated when nothing has changed' do
+    it { is_expected.to merge_java_properties('No changes') }
+    it { is_expected.not_to create_file(test_properties_file_path('test_no_changes.properties')) }
+  end
 end
