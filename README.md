@@ -13,11 +13,16 @@ This cookbook is available on the public supermarket.
 
 Depend on the `java_properties` cookbook in your cookbook's metadata.rb file
  
-`depends java_properties`
+`depends 'java_properties'`
 
 ### java_properties resource
 
 Example usage:
+
+If the properties file already exists, this resource will merge the properties you set with the properties
+contained in the file. Duplicate entries will be overwritten by properties you have set.
+
+If the properties file does not exist, it will be created with the properties you set.
 
 ```
 java_properties '<properties_file>' do
@@ -36,11 +41,6 @@ java_properties '<properties_file>' do
   key2 'value2'
 end
 ```
-
-If the properties file already exists, this resource will merge the properties you set with the properties
-contained in the file. Duplicate entries will be overwritten by properties you have set.
-
-If the properties file does not exist, it will be created with the properties you set.
 
 ## License and Authors
 
