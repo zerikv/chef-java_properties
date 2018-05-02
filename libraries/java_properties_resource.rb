@@ -24,7 +24,7 @@ class Chef
       # This allows us to define attributes dynamically
       # as attributes on the resource
       def method_missing(name, *args)
-        @properties_from_attributes[name.to_sym] = args[0].to_s
+        @properties_from_attributes[name.to_sym] = args[0]
       end
 
       # add a property with key, value
@@ -77,7 +77,7 @@ class Chef
 
       def action_merge
         current_properties = @current_resource.properties_from_file
-        new_properties = new_resource.properties_from_attributes
+        new_properties = Hash[new_resource.properties_from_attributes.map { |(k, v)| [k.to_sym, (v.respond_to?(:call) ? v.call : v).to_s] }]
         merged = current_properties.merge(new_properties)
 
         if merged != current_properties
